@@ -1,0 +1,51 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+//
+
+.col-md-7 {
+  width: 60%;
+}
+
+h1 {
+  font-size: 80px;
+  margin-top: 100px;
+  margin-left: -20px;
+}
+
+.lead {
+  margin-left: -170px;
+  margin-top: -20px;
+}
+
+.welcome {
+  font-size: 36px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+}
+.btn {
+  a {
+    color: darkslategray;
+    text-decoration: none;
+  }
+}
+.row {
+  width: 100%;
+  .foot {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #ededed;
+  }
+}
+
+.new_user {
+  .btn {
+    background-color: white;
+    border-color: #DADADA;
+  }
+}
+.actions {
+  a {
+    color: black;
+  }
+}

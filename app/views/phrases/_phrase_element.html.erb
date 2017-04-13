@@ -1,0 +1,71 @@
+<div class="col-md-2 col-sm-3 text-center">
+  <% if phrase.user.avatar.present? %>
+      <%= image_tag(phrase.user.avatar.url, size: "115x97") %>
+  <% end %>
+
+  <h4><%= phrase.user.name %></h4>
+  <p>Activity:
+    <%= phrase.user.activity %>
+    Expertise:
+    <%= phrase.user.expertise %>
+  </p>
+</div>
+
+<div class="col-md-10">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="phrase-title">
+        <h3 class="modal-title">
+          <%= phrase.phrase %>
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="translation">
+        <%= phrase.translation %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="voting_wrapper" id="<%= phrase.id %>" data-info="Phrase">
+        <div class="voting_btn">
+          <div class="up_button">
+          </div>
+          <span class="up_votes"><%= phrase.cached_votes_up %></span>
+        </div>
+        <div class="voting_btn">
+          <div class="down_button">
+          </div>
+          <span class="down_votes"><%= phrase.cached_votes_down %></span>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div class="btn btn-default">
+        <%= link_to 'Show examples',  phrase_path(phrase.id)%>
+      </div>
+    </div>
+
+    <div class="col-xs-2">
+      <div class="category">
+        <span>Category:</span>
+        <span class="label label-default"><%= phrase.category.name %></span>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div class="btn btn-default">
+        <%= link_to "Edit phrase", edit_phrase_path(phrase.id) %>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div class="btn btn-default">
+        <%= link_to "Delete", phrase_path(phrase.id), method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>

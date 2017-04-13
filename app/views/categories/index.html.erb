@@ -1,0 +1,25 @@
+    <div class="container">
+
+      <div class="row">
+        <div class="col-xs-3">
+      <div class = 'text'>
+        <%= form_for :category, url: categories_path do |f| %>
+            <%= f.text_field :name, placeholder: 'Create new category' , autofocus: true, class: 'form-control' %>
+        <% end %>
+      </div>
+         </div>
+      </div>
+
+      <div class="col-xs-3">
+      <ul>
+        <% @categories.each do |c|%>
+            <li class = 'list_name'>
+           <%= c.name %>
+              <%= link_to category_path(c.id), method: :delete do %>
+              <span class="label label-primary">delete</span>
+            </li>
+        <% end %>
+              <% end %>
+      </ul>
+    </div>
+    </div>

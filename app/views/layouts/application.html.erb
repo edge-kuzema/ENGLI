@@ -1,0 +1,94 @@
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>EngliApp</title>
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+      </head>
+
+      <body>
+      <header class="navbar navbar-fixed-top navbar-default">
+        <div class = "container">
+          <div class="collapse navbar-collapse">
+          <nav>
+            <ul>
+              <div class = "navbar-nav navbar-brand">
+              <li><%= link_to "Main page",   phrases_path %></li>
+              </div>
+              <div class = "nav navbar-nav">
+              <li><%= link_to "New phrase", new_phrase_path, class: "new_phrase" %></li>
+
+
+
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <% Category.all.each do |c| %>
+                      <li>
+                        <%= link_to "#{c.name}", category_path(c) %>
+                      </li>
+                    <% end %>
+
+                    <li class="divider"></li>
+                    <li><%= link_to 'Newest', '#' %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to 'All categories', categories_path %></li>
+
+                  </ul>
+                </li>
+
+              </div>
+              <div class = "nav navbar-right navbar-nav">
+              <% if user_signed_in? %>
+                  <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+                  <li><%= link_to 'Settings', user_path(current_user) %></li>
+              <% else %>
+                  <li><%= link_to "Login",   new_user_session_path %></li>
+                  <li><%= link_to "Register", new_user_registration_path %></li>
+              <% end %>
+              </div>
+            </ul>
+          </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class = "container text-center">
+        <div id="masthead">
+          <div class = "container">
+            <div class = "row">
+              <div class = "col-md-7">
+                <div class = "col-md-5">
+      <h1>ENGLI</h1>
+      <div class="lead">-----------</div>
+      </div>
+      </div>
+      </div>
+        </div>
+        </div>
+      </div>
+
+      <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+        <%= yield %>
+      </body>
+    <footer>
+
+      <div class = "nav">
+        <div class = "row">
+          <div class = "col-md-12">
+      <div class = "text-center foot" >Dunice - 2017 © Кузёма Ирина </div>
+    </div>
+        </div>
+      </div>
+
+    </footer>
+    </html>

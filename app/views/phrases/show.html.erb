@@ -1,0 +1,139 @@
+        <div class="container">
+          <div class="row phrase">
+              <div class="col-md-2 col-sm-3 text-center">
+
+                <% if @phrase.user.avatar.present? %>
+                    <%= image_tag(@phrase.user.avatar.url, size: "115x97") %>
+                <% end %>
+
+                <h4><%= @phrase.user.name %></h4>
+                <p>Activity:
+                  <%= @phrase.user.activity %>
+                  Expertise:
+                  <%= @phrase.user.expertise %>
+                </p>
+              </div>
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="phrase-title">
+                    <h3 class="modal-title">
+                      <%= @phrase.phrase %>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="translation">
+                    <%= @phrase.translation %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-3">
+                  <div class="voting_wrapper" id="<%= @phrase.id %>" data-info="Phrase">
+                    <div class="voting_btn">
+                      <div class="up_button">
+                      </div>
+                      <span class="up_votes"><%= @phrase.cached_votes_up %></span>
+                    </div>
+                    <div class="voting_btn">
+                      <div class="down_button">
+                      </div>
+                      <span class="down_votes"><%= @phrase.cached_votes_down %></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="category">
+                    <span>Category:</span>
+                    <span class="label label-default"><%= @phrase.category.name %></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-left: 340px;">Examples</h2>
+        <div class="container">
+          <div class="row phrase">
+            <div class="col-xs-2">
+              <% if @phrase.user.avatar.present? %>
+                  <%= image_tag(@phrase.user.avatar.url, size: "115x97") %>
+              <% end %>
+              <h4><%= @phrase.user.name %></h4>
+              <p>Activity:
+                <%= @phrase.user.activity %>
+                Expertise:
+                <%= @phrase.user.expertise %>
+              </p>
+            </div>
+             <div class="col-xs-10">
+               <div class="row">
+                <div class="phrase-title">
+                  <h3 class="modal-title">
+                     <% @phrase.examples.each do |e| %>
+                     <%= e.name%>
+                   </h3>
+                <div class="translation">
+                    <%= e.translation %>
+                </div>
+
+                <div class="col-xs-3">
+                  <!--<div class="voting_wrapper" id="" data-info="Example">-->
+                     <!--<div class="voting_btn">-->
+                        <!--<div class="up_button">-->
+                         <!--</div>-->
+                         <!--<span class="up_votes"></span>-->
+                     <!--</div>-->
+                     <!--<div class="voting_btn">-->
+                        <!--<div class="down_button">-->
+                        <!--</div>-->
+                         <!--<span class="down_votes"></span>-->
+                     <!--</div>-->
+                   <!--</div>-->
+
+                </div>
+
+                <div class="row">
+                <div class="col-xs-4">
+                   <div class="category">
+                      <span>Category:</span>
+                      <span class="label label-default"><%= @phrase.category.name %></span>
+                   </div>
+                </div>
+                  <%= link_to "Delete", phrase_example_path(e.id), class: 'btn btn-default', method: :delete %>
+                </div>
+                   <% end %>
+                </div>
+               </div>
+             </div>
+            </div>
+          </div>
+
+
+        <div class="row">
+        <div class="col-md-3 col-md-offset-3">
+        <h3>Add a example</h3>
+        <%= form_for @phrase do |f| %>
+
+              <%= f.fields_for :examples, @phrase.examples.build do |e| %> <!--создает новый example, а не редактирует существующий -->
+
+                    <%= e.label :name %>
+                    <%= e.text_field :name, class: 'form-control' %>
+
+                    <%= e.label :translation %>
+                    <%= e.text_field :translation, class: 'form-control' %>
+
+                    <%= e.submit "Create new example", class: "btn btn-primary" %>
+
+                  <% end %>
+
+        <% end %>
+        </div>
+        </div>
+

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  phrase: MyText
+  translation: MyText
+  examples: MyText
+  votes: 1
+  category: MyString
+  user: one
+  category: one
+
+two:
+  phrase: MyText
+  translation: MyText
+  examples: MyText
+  votes: 1
+  category: MyString
+  user: two
+  category: two

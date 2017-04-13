@@ -1,0 +1,13 @@
+<div class="row">
+<div class="col-md-2 col-md-offset-3">
+<div class="avatar">
+  <%= image_tag(@user.avatar.url) %> <!--показывает какой аватар выбран на данный момент -->
+</div>
+<%= form_for @user do |f| %>
+    <div class="field">
+      <%= f.file_field :avatar, class: 'form-control' %>
+    </div>
+    <%= f.submit "Create new avatar", class: "btn btn-primary" %>
+<% end %>
+</div>
+</div>

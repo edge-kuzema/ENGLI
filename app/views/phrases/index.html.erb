@@ -1,0 +1,8 @@
+<div class="container">
+  <% @phrases.each do |phrase|%>
+      <div class="row phrase">
+        <%= render partial: 'phrase_element', :locals => {phrase: phrase} %>
+      </div>
+  <% end %>
+</div>
+

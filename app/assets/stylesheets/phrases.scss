@@ -1,0 +1,23 @@
+// Place all the styles related to the Phrases controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.phrase {
+  //background-color: aliceblue;
+  border: 1px solid lightblue;
+  margin-bottom: 25px;
+  padding: 5px;
+  .translation {
+    padding: 30px;
+  }
+}
+
+.btn-primary {
+  margin-top: 15px;
+}
+
+.examples {
+  margin-top: 10px;
+  font-style: oblique;
+  color: cadetblue;
+  font-size: 20px;
+}
