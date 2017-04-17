@@ -1,5 +1,9 @@
 <div class="container">
   <% @category.phrases.each do |c|%>
+      <div class = "container">
+        <div class = "row">
       <%= render partial: 'phrases/phrase_element', locals: {phrase: c}%>
+        </div>
+      </div>
   <% end %>
 </div>

@@ -1,13 +1,21 @@
 <div class="row">
 <div class="col-md-2 col-md-offset-3">
 <div class="avatar">
+  <% if @user.avatar.present? %>
   <%= image_tag(@user.avatar.url) %> <!--показывает какой аватар выбран на данный момент -->
+  <% end %>
 </div>
 <%= form_for @user do |f| %>
     <div class="field">
       <%= f.file_field :avatar, class: 'form-control' %>
     </div>
     <%= f.submit "Create new avatar", class: "btn btn-primary" %>
+
+      <div class="field change_name">
+        <h3>Change you name</h3>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.submit "Edit name", class: "btn btn-primary" %>
+      </div>
 <% end %>
 </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413070808) do
+ActiveRecord::Schema.define(version: 20170414123644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,14 +25,8 @@ ActiveRecord::Schema.define(version: 20170413070808) do
     t.text     "name"
     t.text     "translation"
     t.integer  "phrase_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "cached_votes_up",    default: 0
-    t.integer  "cached_votes_down",  default: 0
-    t.integer  "cached_votes_score", default: 0
-    t.index ["cached_votes_down"], name: "index_examples_on_cached_votes_down", using: :btree
-    t.index ["cached_votes_score"], name: "index_examples_on_cached_votes_score", using: :btree
-    t.index ["cached_votes_up"], name: "index_examples_on_cached_votes_up", using: :btree
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["phrase_id"], name: "index_examples_on_phrase_id", using: :btree
   end
 
@@ -42,14 +36,10 @@ ActiveRecord::Schema.define(version: 20170413070808) do
     t.text     "examples"
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "cached_votes_up",    default: 0
-    t.integer  "cached_votes_down",  default: 0
-    t.integer  "cached_votes_score", default: 0
-    t.index ["cached_votes_down"], name: "index_phrases_on_cached_votes_down", using: :btree
-    t.index ["cached_votes_score"], name: "index_phrases_on_cached_votes_score", using: :btree
-    t.index ["cached_votes_up"], name: "index_phrases_on_cached_votes_up", using: :btree
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "category"
+    t.string   "category_name"
     t.index ["category_id"], name: "index_phrases_on_category_id", using: :btree
     t.index ["user_id", "created_at", "category_id"], name: "index_phrases_on_user_id_and_created_at_and_category_id", using: :btree
     t.index ["user_id"], name: "index_phrases_on_user_id", using: :btree

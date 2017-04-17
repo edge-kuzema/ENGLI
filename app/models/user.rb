@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_many :phrases
   has_many :categories
-  acts_as_voter
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # :recoverable, :rememberable, :trackable,

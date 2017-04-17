@@ -34,18 +34,9 @@
 
               <div class="row">
                 <div class="col-xs-3">
-                  <div class="voting_wrapper" id="<%= @phrase.id %>" data-info="Phrase">
-                    <div class="voting_btn">
-                      <div class="up_button">
-                      </div>
-                      <span class="up_votes"><%= @phrase.cached_votes_up %></span>
-                    </div>
-                    <div class="voting_btn">
-                      <div class="down_button">
-                      </div>
-                      <span class="down_votes"><%= @phrase.cached_votes_down %></span>
-                    </div>
-                  </div>
+                  <%= link_to " ", like_phrase_path(@phrase.id), class: 'glyphicon glyphicon-thumbs-up', method: :put %>
+                  <%= @phrase.score %>
+                  <%= link_to " ", dislike_phrase_path(@phrase.id), class: 'glyphicon glyphicon-thumbs-down', method: :put %>
                 </div>
                 <div class="col-xs-4">
                   <div class="category">
@@ -84,19 +75,9 @@
                 </div>
 
                 <div class="col-xs-3">
-                  <!--<div class="voting_wrapper" id="" data-info="Example">-->
-                     <!--<div class="voting_btn">-->
-                        <!--<div class="up_button">-->
-                         <!--</div>-->
-                         <!--<span class="up_votes"></span>-->
-                     <!--</div>-->
-                     <!--<div class="voting_btn">-->
-                        <!--<div class="down_button">-->
-                        <!--</div>-->
-                         <!--<span class="down_votes"></span>-->
-                     <!--</div>-->
-                   <!--</div>-->
-
+                <%= link_to " ", like_phrase_example_path(e.id), class: 'glyphicon glyphicon-thumbs-up', method: :put %>
+                <%= e.score %>
+                <%= link_to " ", dislike_phrase_example_path(e.id), class: 'glyphicon glyphicon-thumbs-down', method: :put %>
                 </div>
 
                 <div class="row">

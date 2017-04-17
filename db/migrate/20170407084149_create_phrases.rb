@@ -11,6 +11,6 @@ class CreatePhrases < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :phrases, [:user_id, :created_at, :category_id]
+    add_index :phrases, [:user_id, :created_at, :category_id, :category_name]
   end
 end

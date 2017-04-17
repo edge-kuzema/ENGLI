@@ -2,7 +2,8 @@ class PhrasesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @phrases = Phrase.all.order(id: :desc)
+    @phrases = Phrase.all
+    @phrases = Kaminari.paginate_array(Phrase.all.sort_by{|phrase| phrase.score}.reverse).page(params[:page]).per(10)
   end
 
   def new
@@ -17,6 +18,7 @@ class PhrasesController < ApplicationController
     @phrase = Phrase.new(phrases_params)
     @phrase.user = current_user
     @phrase.save
+    current_user.update_attribute(:activity, current_user.activity + 10 )
     redirect_to phrases_path
   end
 
@@ -27,14 +29,40 @@ class PhrasesController < ApplicationController
   def update
     @phrase = Phrase.find_by(id: params[:id])
     @phrase.update_attributes(phrases_params)
+    current_user.update_attribute(:activity, current_user.activity + 4 )
     redirect_to phrase_path(@phrase)
   end
 
   def destroy
-    @phrase = Phrase.find_by(id: params[:id])
+    @phrase = Phrase.find(params[:id])
     @phrase.destroy
-    redirect_to phrases_path
+    redirect_to (:back)
   end
+
+  def upvote
+    @phrase = Phrase.find(params[:id])
+    if Vote.where(votable_type: "Phrase", votable_id: @phrase.id, voter_id: current_user.id, vote_flag: true ).blank?
+      @phrase.user.update_attribute(:expertise, @phrase.user.expertise + 3 )
+      current_user.update_attribute(:activity, current_user.activity + 1 )
+    end
+    @phrase.upvote_by current_user
+    redirect_to (:back)
+  end
+
+  def downvote
+    @phrase = Phrase.find(params[:id])
+    if Vote.where(votable_type: "Phrase", votable_id: @phrase.id, voter_id: current_user.id, vote_flag: false).blank?
+     current_user.update_attribute(:activity, current_user.activity - 1 )
+    @phrase.user.update_attribute(:expertise, @phrase.user.expertise - 3 )
+    end
+    @phrase.downvote_by current_user
+    redirect_to (:back)
+  end
+
+  def newest
+    @phrases = Phrase.all.order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
+  end
+
 
   private
 
