@@ -8,7 +8,7 @@
 
                 <h4><%= @phrase.user.name %></h4>
                 <p>Activity:
-                  <%= @phrase.user.activity %>
+                  <%= @phrase.user.activ %>
                   Expertise:
                   <%= @phrase.user.expertise %>
                 </p>
@@ -33,14 +33,17 @@
               </div>
 
               <div class="row">
-                <div class="col-xs-3">
+                <div class="col-xs-4">
                   <%= link_to " ", like_phrase_path(@phrase.id), class: 'glyphicon glyphicon-thumbs-up', method: :put %>
                   <%= @phrase.score %>
                   <%= link_to " ", dislike_phrase_path(@phrase.id), class: 'glyphicon glyphicon-thumbs-down', method: :put %>
                 </div>
-                <div class="col-xs-4">
+                <div class="btn btn-default">
+                  <%= link_to "Edit phrase", edit_phrase_path(@phrase.id) %>
+                </div>
+                <div class="col-xs-3">
                   <div class="category">
-                    <span>Category:</span>
+                    Category:
                     <span class="label label-default"><%= @phrase.category.name %></span>
                   </div>
                 </div>
@@ -58,7 +61,7 @@
               <% end %>
               <h4><%= @phrase.user.name %></h4>
               <p>Activity:
-                <%= @phrase.user.activity %>
+                <%= @phrase.user.activ %>
                 Expertise:
                 <%= @phrase.user.expertise %>
               </p>
@@ -66,24 +69,22 @@
              <div class="col-xs-10">
                <div class="row">
                 <div class="phrase-title">
-                  <h3 class="modal-title">
                      <% @phrase.examples.each do |e| %>
-                     <%= e.name%>
-                   </h3>
+                        <h3 class="modal-title">
+                          <%= e.name%>
+                        </h3>
                 <div class="translation">
                     <%= e.translation %>
                 </div>
-
                 <div class="col-xs-3">
                 <%= link_to " ", like_phrase_example_path(e.id), class: 'glyphicon glyphicon-thumbs-up', method: :put %>
                 <%= e.score %>
                 <%= link_to " ", dislike_phrase_example_path(e.id), class: 'glyphicon glyphicon-thumbs-down', method: :put %>
                 </div>
-
                 <div class="row">
                 <div class="col-xs-4">
                    <div class="category">
-                      <span>Category:</span>
+                      Category:
                       <span class="label label-default"><%= @phrase.category.name %></span>
                    </div>
                 </div>
@@ -91,9 +92,12 @@
                 </div>
                    <% end %>
                 </div>
+
                </div>
              </div>
+
             </div>
+          </div>
           </div>
 
 

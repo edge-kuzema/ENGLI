@@ -12,6 +12,7 @@ gem 'carrierwave',             '0.11.2'
 gem 'rmagick'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'kaminari'
+gem 'public_activity'
 gem 'mini_magick',             '4.5.1'
 gem 'fog',                     '1.38.0'
 gem 'will_paginate',           '3.1.0' #гем для разбивки множества пользователей по страницам

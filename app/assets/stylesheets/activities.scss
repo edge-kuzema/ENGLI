@@ -1,0 +1,30 @@
+// Place all the styles related to the Activities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ .notification {
+   margin-top: 15px;
+   a {
+     text_decoration: none;
+   color: dimgrey;
+   font-size: 16px;}
+   a:hover {
+     text_decoration: none;
+     color: black;
+   }
+ }
+
+.list_name {
+  color: black;
+}
+
+.delete {
+.icon {
+  color: black;
+  }
+}
+
+span {
+
+    color: cadetblue;
+    font-size: 18px;
+}

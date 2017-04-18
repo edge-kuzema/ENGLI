@@ -1,10 +1,12 @@
 class User < ApplicationRecord
+  include PublicActivity::Model
+  tracked
   has_many :phrases
   has_many :categories
+
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  # :recoverable, :rememberable, :trackable,
-  devise :database_authenticatable, :registerable, :validatable
+  # :lockable, :timeoutable and :omniauthablerail
+  devise :database_authenticatable, :registerable, :validatable, :rememberable, :recoverable
 
   mount_uploader :avatar, AvatarUploader
 

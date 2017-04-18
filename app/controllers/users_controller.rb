@@ -4,11 +4,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    current_user
   end
 
   def create
-    byebug
     @user = User.new(users_params)
     @user.save
   end

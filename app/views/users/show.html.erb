@@ -1,11 +1,11 @@
 <div class="row">
 <div class="col-md-2 col-md-offset-3">
 <div class="avatar">
-  <% if @user.avatar.present? %>
-  <%= image_tag(@user.avatar.url) %> <!--показывает какой аватар выбран на данный момент -->
+  <% if current_user.avatar.present? %>
+  <%= image_tag(current_user.avatar.url) %> <!--показывает какой аватар выбран на данный момент -->
   <% end %>
 </div>
-<%= form_for @user do |f| %>
+<%= form_for current_user do |f| %>
     <div class="field">
       <%= f.file_field :avatar, class: 'form-control' %>
     </div>
@@ -17,5 +17,9 @@
         <%= f.submit "Edit name", class: "btn btn-primary" %>
       </div>
 <% end %>
+
+  <div class = "notification" >
+  <%= link_to "Show last notifications", activities_path %>
+</div>
 </div>
 </div>

@@ -4,9 +4,9 @@
       <%= image_tag(phrase.user.avatar.url, size: "115x97") %>
   <% end %>
 
-  <h4><%= phrase.user.name %></h4>
+  <h4><%= link_to phrase.user.name, user_phrases_path(phrase.user) %></h4>
   <p>Activity:
-    <%= phrase.user.activity %>
+    <%= phrase.user.activ %>
     Expertise:
     <%= phrase.user.expertise %>
   </p>
@@ -46,7 +46,7 @@
 
     <div class="col-xs-2">
       <div class="category">
-        <span>Category:</span>
+        Category:
         <span class="label label-default"><%= phrase.category.name %></span>
       </div>
     </div>

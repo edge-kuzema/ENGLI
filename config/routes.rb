@@ -4,19 +4,23 @@ Rails.application.routes.draw do
 
   root   'static_pages#home'
   resources :categories
-  resources :phrases do
-  resources :examples
-  end
-resources :users
 
-  resources :phrase do
+  resources :users do
+    resources :phrases do
+      resources :examples
+    end
+  end
+
+
+  resources :activities
+
+  resources :phrases do
+
     member do
       put "like", to: "phrases#upvote"
       put "dislike", to: "phrases#downvote"
     end
-  end
 
-  resources :phrases do
     resources :examples do
       member do
         put "like", to: "examples#upvote"

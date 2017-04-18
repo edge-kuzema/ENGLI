@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+  <div class="col-xs-6">
+    <ul>
+      <% @activities.each do |a|%>
+          <li class = 'list_name'>
+            <%= a.key.html_safe %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+
+    <div class="col-xs-6">
+      <ul>
+        <% @activities.each do |a|%>
+            <li class = 'list_name'>
+              <div class = "delete" >
+                <%= link_to activity_path(a.id), method: :delete do %>
+                    <span class="icon">x</span>
+                <% end %>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+    </div>
+</div>
+
