@@ -5,6 +5,5 @@ class CreateCategories < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :category, [:phrase_id]
   end
 end
