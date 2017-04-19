@@ -54,9 +54,10 @@ ActiveRecord::Schema.define(version: 20170418090711) do
     t.integer  "category_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "category"
     t.string   "category_name"
     t.index ["category_id"], name: "index_phrases_on_category_id", using: :btree
-    t.index ["created_at"], name: "index_phrases_on_created_at", using: :btree
+    t.index ["user_id", "created_at", "category_id"], name: "index_phrases_on_user_id_and_created_at_and_category_id", using: :btree
     t.index ["user_id"], name: "index_phrases_on_user_id", using: :btree
   end
 
