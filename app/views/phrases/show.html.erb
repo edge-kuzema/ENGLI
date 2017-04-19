@@ -38,9 +38,9 @@
                   <%= @phrase.score %>
                   <%= link_to " ", dislike_phrase_path(@phrase.id), class: 'glyphicon glyphicon-thumbs-down', method: :put %>
                 </div>
-                <div class="btn btn-default">
-                  <%= link_to "Edit phrase", edit_phrase_path(@phrase.id) %>
-                </div>
+                  <% if current_user == @phrase.user %>
+                  <%= link_to "Edit phrase", edit_phrase_path(@phrase.id), class: "col-xs-4" %>
+                      <% end %>
                 <div class="col-xs-3">
                   <div class="category">
                     Category:
@@ -88,7 +88,9 @@
                       <span class="label label-default"><%= @phrase.category.name %></span>
                    </div>
                 </div>
+                  <% if current_user == @phrase.user %>
                   <%= link_to "Delete", phrase_example_path(e.id), class: 'btn btn-default', method: :delete %>
+                      <% end %>
                 </div>
                    <% end %>
                 </div>

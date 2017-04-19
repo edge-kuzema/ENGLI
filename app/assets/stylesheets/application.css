@@ -18,3 +18,20 @@
      color: #223344;
      margin-top: 10px;
  }
+ .bar {
+     font-size: 20px;
+ }
+
+ .avatar {
+     margin-bottom: 10px;
+ }
+ .image {
+     border-radius: 10%;
+     box-shadow: 0 0 10px rgba(0,0,0,0.9);;
+ }
+
+ .icon {
+     display: inline-block;
+     float: right;
+     opacity: 0.5;
+ }

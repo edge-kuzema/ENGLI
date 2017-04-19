@@ -34,7 +34,7 @@ class PhrasesController < ApplicationController
   def update
     @phrase = Phrase.find_by(id: params[:id])
     @phrase.update_attributes(phrases_params)
-    @phrase.create_activity key: "The new example has been add to your phrase <span>'#{@phrase.phrase}'</span> by #{current_user.name}", owner: current_user, recipient: @phrase.user
+    @phrase.create_activity key: "The new example has been added to your phrase <span>'#{@phrase.phrase}'</span> by #{current_user.name}", owner: current_user, recipient: @phrase.user
     current_user.update_attribute(:activ, current_user.activ + 4 )
     redirect_to phrase_path(@phrase)
   end

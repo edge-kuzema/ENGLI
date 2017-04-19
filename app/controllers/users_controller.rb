@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    current_user
+    if @user = current_user
+      current_user
+      @activities = PublicActivity::Activity.where(recipient_type: 'User', recipient_id: current_user.id)
+    else
+      redirect_to user_phrases_path
+    end
   end
 
   def create
